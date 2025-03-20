@@ -1,19 +1,27 @@
 {
   "name": "TypeScript with Bun Development",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:latest",
-  "features": {},
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "WallabyJs.console-ninja"
-      ]
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
     }
   },
-  "postCreateCommand": "curl -fsSL https://bun.sh/install | bash && echo 'export PATH=$HOME/.bun/bin:$PATH' >> ~/.bashrc && echo 'export BUN_INSTALL=$HOME/.bun' >> ~/.bashrc",
+  "postCreateCommand": "curl -fsSL https://bun.sh/install | bash && echo 'export PATH=$HOME/.bun/bin:$PATH' >> ~/.bashrc && source ~/.bashrc",
   "remoteUser": "node",
   "remoteEnv": {
-    "PATH": "${containerEnv:PATH}:${containerEnv:HOME}/.bun/bin"
+    "PATH": "${containerEnv:PATH}:${containerEnv:HOME}/.bun/bin",
+    "BUN_INSTALL": "${containerEnv:HOME}/.bun"
   }
 }

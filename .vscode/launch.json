@@ -16,6 +16,20 @@
         "${workspaceFolder}/**",
         "!**/node_modules/**"
       ]
+    },
+    {
+      "type": "bun",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "bun",
+      "request": "attach",
+      "name": "Attach to Bun",
+      "url": "ws://localhost:6499/",
+      "stopOnEntry": false
     }
   ]
 }
