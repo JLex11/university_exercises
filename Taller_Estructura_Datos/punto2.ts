@@ -104,7 +104,9 @@ const miAuto: Auto = {
 };
 
 for (const propiedad in miAuto) {
-	console.log(`Propiedad: ${propiedad}, Valor: ${miAuto[propiedad]}`);
+	console.log(
+		`Propiedad: ${propiedad}, Valor: ${miAuto[propiedad as keyof Auto]}`,
+	);
 }
 
 // For...of
