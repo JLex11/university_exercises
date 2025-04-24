@@ -1,7 +1,16 @@
 {
+  "name": "university_exercises",
+  "private": true,
   "dependencies": {
     "@types/node": "^22.14.0",
     "@types/xml2js": "^0.4.14",
     "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
   }
 }
