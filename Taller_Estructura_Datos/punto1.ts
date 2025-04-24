@@ -7,84 +7,88 @@ const booleanos: boolean[] = [true, false, true];
 const mixto: any[] = [1, "texto", true, null]; // Usar 'any' con moderación
 
 // * Metodos de insercion *
+console.log("**Metodos de insercion**");
 const frutas: string[] = ["manzana", "banana"];
-console.log("Array inicial:", frutas); // Salida: ['manzana', 'banana']
+console.log("\nArray inicial:", frutas); // Salida: ['manzana', 'banana']
 
 // push(): Añade al final del array
 frutas.push("naranja");
-console.log("Después de push:", frutas); // Salida: ['manzana', 'banana', 'naranja']
+console.log("\nDespués de push:", frutas); // Salida: ['manzana', 'banana', 'naranja']
 
 // unshift(): Añade al inicio del array
 frutas.unshift("kiwi");
-console.log("Después de unshift:", frutas); // Salida: ['kiwi', 'manzana', 'banana', 'naranja']
+console.log("\nDespués de unshift:", frutas); // Salida: ['kiwi', 'manzana', 'banana', 'naranja']
 
 // splice(): Añade en una posición específica (y puede eliminar elementos)
 frutas.splice(2, 0, "mango", "piña"); // En la posición 2, elimina 0 elementos, e inserta 'mango' y 'piña'
-console.log("Después de splice (inserción):", frutas); // Salida: ['kiwi', 'manzana', 'mango', 'piña', 'banana', 'naranja']
+console.log("\nDespués de splice (inserción):", frutas); // Salida: ['kiwi', 'manzana', 'mango', 'piña', 'banana', 'naranja']
 
 // Acceder por índice y asignar (en realidad es actualización si ya existe el índice, inserción si es al final o más allá, pero puede dejar huecos 'undefined' si se salta índices)
 frutas[frutas.length] = "fresa"; // Añade al final (como push, pero menos común directamente así)
-console.log("Después de asignar por índice al final:", frutas); // Salida: ['kiwi', 'manzana', 'mango', 'piña', 'banana', 'naranja', 'fresa']
+console.log("\nDespués de asignar por índice al final:", frutas); // Salida: ['kiwi', 'manzana', 'mango', 'piña', 'banana', 'naranja', 'fresa']
 
 // * Métodos de eliminación *
+console.log("**Métodos de eliminación**");
 const colores: string[] = ["rojo", "verde", "azul", "amarillo", "morado"];
-console.log("Array inicial colores:", colores); // Salida: ['rojo', 'verde', 'azul', 'amarillo', 'morado']
+console.log("\nArray inicial colores:", colores); // Salida: ['rojo', 'verde', 'azul', 'amarillo', 'morado']
 
 // pop(): Elimina el último elemento y lo retorna
 const ultimoColor = colores.pop();
-console.log("Después de pop:", colores); // Salida: ['rojo', 'verde', 'azul', 'amarillo']
-console.log("Elemento eliminado con pop:", ultimoColor); // Salida: morado
+console.log("\nDespués de pop:", colores); // Salida: ['rojo', 'verde', 'azul', 'amarillo']
+console.log("\nElemento eliminado con pop:", ultimoColor); // Salida: morado
 
 // shift(): Elimina el primer elemento y lo retorna
 const primerColor = colores.shift();
-console.log("Después de shift:", colores); // Salida: ['verde', 'azul', 'amarillo']
-console.log("Elemento eliminado con shift:", primerColor); // Salida: rojo
+console.log("\nDespués de shift:", colores); // Salida: ['verde', 'azul', 'amarillo']
+console.log("\nElemento eliminado con shift:", primerColor); // Salida: rojo
 
 // splice(): Elimina elementos desde una posición específica
 const coloresBorrados = colores.splice(1, 2); // Desde la posición 1, elimina 2 elementos ('azul', 'amarillo')
-console.log("Después de splice (borrado):", colores); // Salida: ['verde']
-console.log("Elementos borrados con splice:", coloresBorrados); // Salida: ['azul', 'amarillo']
+console.log("\nDespués de splice (borrado):", colores); // Salida: ['verde']
+console.log("\nElementos borrados con splice:", coloresBorrados); // Salida: ['azul', 'amarillo']
 
 // delete: Elimina un elemento por índice, pero deja un hueco 'empty' (undefined)
 delete colores[0];
-console.log("Después de delete colores[0]:", colores); // Salida: [empty] (o [undefined] dependiendo del entorno de ejecución)
-console.log("Colores[0] después de delete:", colores[0]); // Salida: undefined
+console.log("\nDespués de delete colores[0]:", colores); // Salida: [empty] (o [undefined] dependiendo del entorno de ejecución)
+console.log("\nColores[0] después de delete:", colores[0]); // Salida: undefined
 
 // * Métodos de actualización *
+console.log("**Métodos de actualización**");
 let animales: string[] = ["perro", "gato", "hamster"];
-console.log("Array inicial animales:", animales); // Salida: ['perro', 'gato', 'hamster']
+console.log("\nArray inicial animales:", animales); // Salida: ['perro', 'gato', 'hamster']
 
 // Acceder por índice y reasignar
 animales[1] = "conejo"; // Reemplaza 'gato' con 'conejo'
-console.log("Después de actualizar animales[1]:", animales); // Salida: ['perro', 'conejo', 'hamster']
+console.log("\nDespués de actualizar animales[1]:", animales); // Salida: ['perro', 'conejo', 'hamster']
 
 // slice() y assign/spread para actualizar una porción (no es una actualización directa, crea un nuevo array con la modificación)
 const parte1 = animales.slice(0, 1); // ['perro']
 const parte2 = ["loro", "canario"];
 const parte3 = animales.slice(2); // ['hamster']
 animales = [...parte1, ...parte2, ...parte3]; // Reconstruye 'animales' con la parte modificada
-console.log("Después de actualizar con slice y spread:", animales); // Salida: ['perro', 'loro', 'canario', 'hamster']
+console.log("\nDespués de actualizar con slice y spread:", animales); // Salida: ['perro', 'loro', 'canario', 'hamster']
 
 // * Métodos de ordenación *
+console.log("**Métodos de ordenación**");
 const numerosDesordenados: number[] = [5, 2, 8, 1, 9, 4];
 const nombresDesordenados: string[] = ["Carlos", "Ana", "Beatriz", "David"];
-console.log("Números desordenados:", numerosDesordenados); // Salida: [5, 2, 8, 1, 9, 4]
-console.log("Nombres desordenados:", nombresDesordenados); // Salida: ['Carlos', 'Ana', 'Beatriz', 'David']
+console.log("\nNúmeros desordenados:", numerosDesordenados); // Salida: [5, 2, 8, 1, 9, 4]
+console.log("\nNombres desordenados:", nombresDesordenados); // Salida: ['Carlos', 'Ana', 'Beatriz', 'David']
 
 // sort(): Ordena el array
 // Por defecto, sort() ordena como strings (unicode point order), así que para números hay que pasar una función de comparación.
 numerosDesordenados.sort((a, b) => a - b); // Orden ascendente numérico
-console.log("Números ordenados ascendente:", numerosDesordenados); // Salida: [1, 2, 4, 5, 8, 9]
+console.log("\nNúmeros ordenados ascendente:", numerosDesordenados); // Salida: [1, 2, 4, 5, 8, 9]
 
 nombresDesordenados.sort(); // Orden alfabético (por defecto sort() para strings)
-console.log("Nombres ordenados alfabéticamente:", nombresDesordenados); // Salida: ['Ana', 'Beatriz', 'Carlos', 'David']
+console.log("\nNombres ordenados alfabéticamente:", nombresDesordenados); // Salida: ['Ana', 'Beatriz', 'Carlos', 'David']
 
 nombresDesordenados.sort((a, b) => b.localeCompare(a)); // Orden alfabético inverso (con localeCompare para considerar acentos, etc. si fuera necesario)
-console.log("Nombres ordenados alfabéticamente inverso:", nombresDesordenados); // Salida: ['David', 'Carlos', 'Beatriz', 'Ana']
+console.log("\nNombres ordenados alfabéticamente inverso:", nombresDesordenados); // Salida: ['David', 'Carlos', 'Beatriz', 'Ana']
 
 // reverse(): Invierte el orden del array
 numerosDesordenados.reverse();
-console.log("Números invertidos (reverse):", numerosDesordenados); // Salida: [1, 2, 4, 5, 8, 9] (después de ordenar ascendente y luego reverse se vuelve descendente en este caso)
+console.log("\nNúmeros invertidos (reverse):", numerosDesordenados); // Salida: [1, 2, 4, 5, 8, 9] (después de ordenar ascendente y luego reverse se vuelve descendente en este caso)
 
 // 2) Objectos
 // 1. Objeto literal (la forma más común)
@@ -113,32 +117,33 @@ class Animal {
 	}
 
 	hacerSonido(): void {
-		console.log("Sonido genérico de animal");
+		console.log("\nSonido genérico de animal");
 	}
 }
 
 const miAnimal = new Animal("León", "Mamífero");
-console.log("Objeto creado con clase:", miAnimal);
+console.log("\nObjeto creado con clase:", miAnimal);
 miAnimal.hacerSonido(); // Salida: Sonido genérico de animal
 
 // * Inserción *
-const libro: { titulo: string; autor: string } = {
+const libro: { titulo: string; autor: string; genero?: string } = {
 	titulo: "Cien años de soledad",
 	autor: "Gabriel García Márquez",
 };
 
 // Dot notation (notación de punto)
 libro.genero = "Realismo mágico"; // Añade la propiedad 'genero'
-console.log("Después de añadir con dot notation:", libro);
+console.log("\nDespués de añadir con dot notation:", libro);
 // Salida: {titulo: 'Cien años de soledad', autor: 'Gabriel García Márquez', genero: 'Realismo mágico'}
 
 const propiedadDinamica = "editorial";
 libro[propiedadDinamica] = "Sudamericana"; // Añade propiedad dinámicamente
-console.log("Después de añadir propiedad dinámica:", libro);
+console.log("\nDespués de añadir propiedad dinámica:", libro);
 // Salida: {titulo: 'Cien años de soledad', autor: 'Gabriel García Márquez', genero: 'Realismo mágico', paginas: 496, editorial: 'Sudamericana'}
 
 // * Métodos de eliminación *
-const producto: { nombre: string; precio: number; disponible: boolean } = {
+console.log("**Métodos de eliminación**");
+const producto: { nombre: string | undefined; precio: number; disponible?: boolean } = {
 	nombre: "Laptop",
 	precio: 1200,
 	disponible: true,
@@ -146,13 +151,14 @@ const producto: { nombre: string; precio: number; disponible: boolean } = {
 
 // delete keyword
 delete producto.disponible; // Elimina la propiedad 'disponible'
-console.log("Después de delete producto.disponible:", producto); // Salida: {nombre: 'Laptop', precio: 1200}
+console.log("\nDespués de delete producto.disponible:", producto); // Salida: {nombre: 'Laptop', precio: 1200}
 
 // Asignar 'undefined' -  técnicamente no borra la propiedad, sino que le asigna el valor 'undefined'. La propiedad sigue existiendo, pero sin un valor útil.  Generalmente se prefiere 'delete' para eliminar propiedades.
 producto.nombre = undefined;
-console.log("Después de asignar producto.nombre = undefined:", producto); // Salida: {nombre: undefined} - propiedad 'nombre' sigue ahí, pero con valor undefined
+console.log("\nDespués de asignar producto.nombre = undefined:", producto); // Salida: {nombre: undefined} - propiedad 'nombre' sigue ahí, pero con valor undefined
 
 // * Métodos de actualización *
+console.log("**Métodos de actualización**");
 const usuario: { nombreUsuario: string; email: string; activo: boolean } = {
 	nombreUsuario: "usuario123",
 	email: "usuario@example.com",
@@ -161,7 +167,7 @@ const usuario: { nombreUsuario: string; email: string; activo: boolean } = {
 
 // Dot notation
 usuario.activo = true; // Actualiza la propiedad 'activo'
-console.log("Después de actualizar usuario.activo:", usuario); // Salida: {nombreUsuario: 'usuario123', email: 'usuario@example.com', activo: true}
+console.log("\nDespués de actualizar usuario.activo:", usuario); // Salida: {nombreUsuario: 'usuario123', email: 'usuario@example.com', activo: true}
 
 // * Métodos de ordenación *
 // Los objectos en JavaScript no tienen un orden específico, pero se pueden ordenar por propiedades al convertirlos a arrays o al usar métodos como
@@ -170,16 +176,16 @@ console.log("Después de actualizar usuario.activo:", usuario); // Salida: {nomb
 // 3) Mapas (Map)
 // 1. Constructor Map - vacío
 const mapaVacio = new Map();
-console.log("Mapa vacío:", mapaVacio); // Salida: Map(0) {}
+console.log("\nMapa vacío:", mapaVacio); // Salida: Map(0) {}
 
 // 2. Constructor Map - con inicialización (array de arrays clave-valor)
-const mapaInicial = new Map([
+const mapaInicial = new Map<string | number | boolean, string | number>([
 	["nombre", "Ricardo"],
 	["edad", 42],
 	[true, "activo"],
 	[100, "valor numerico"], // Claves pueden ser de diferentes tipos
 ]);
-console.log("Mapa inicializado:", mapaInicial);
+console.log("\nMapa inicializado:", mapaInicial);
 // Salida (aproximada, el orden de salida es el de inserción):
 // Map(4) {
 //   'nombre' => 'Ricardo',
@@ -193,7 +199,7 @@ const paisesCapitales = new Map();
 
 // set(clave, valor): Inserta o actualiza un par clave-valor
 paisesCapitales.set("España", "Madrid");
-console.log("Después de set('España', 'Madrid'):", paisesCapitales); // Salida: Map(1) { 'España' => 'Madrid' }
+console.log("\nDespués de set('España', 'Madrid'):", paisesCapitales); // Salida: Map(1) { 'España' => 'Madrid' }
 
 // * Métodos de eliminación *
 const agendaContactos = new Map([
@@ -204,12 +210,12 @@ const agendaContactos = new Map([
 
 // delete(clave): Elimina la entrada con la clave especificada. Retorna true si la clave existía y fue eliminada, false si no.
 const borradoPedro = agendaContactos.delete("Pedro");
-console.log("Después de delete('Pedro'):", agendaContactos); // Salida: Map(2) { 'Ana' => '123-456-7890', 'Lucía' => '555-123-9876' }
-console.log("¿Se borró Pedro?", borradoPedro); // Salida: true
+console.log("\nDespués de delete('Pedro'):", agendaContactos); // Salida: Map(2) { 'Ana' => '123-456-7890', 'Lucía' => '555-123-9876' }
+console.log("\n¿Se borró Pedro?", borradoPedro); // Salida: true
 
 // clear(): Elimina todas las entradas del mapa
 agendaContactos.clear();
-console.log("Después de clear():", agendaContactos); // Salida: Map(0) {} (mapa vacío)
+console.log("\nDespués de clear():", agendaContactos); // Salida: Map(0) {} (mapa vacío)
 
 // * Métodos de actualización *
 // se realiza con set(clave, nuevoValor) para una clave existente. Si la clave ya existe, set reemplaza el valor asociado a esa clave.
@@ -220,40 +226,40 @@ console.log("Después de clear():", agendaContactos); // Salida: Map(0) {} (mapa
 // 4) Conjuntos (Set)
 // 1. Constructor Set - vacío
 const conjuntoVacio = new Set();
-console.log("Conjunto vacío:", conjuntoVacio); // Salida: Set(0) {}
+console.log("\nConjunto vacío:", conjuntoVacio); // Salida: Set(0) {}
 
 // 2. Constructor Set - con inicialización (iterable, por ejemplo, un array)
 const conjuntoInicial = new Set([10, 20, 30, 20, 10]); // Intentamos añadir duplicados
-console.log("Conjunto inicializado:", conjuntoInicial); // Salida: Set(3) { 10, 20, 30 } - ¡Duplicados se eliminan!
+console.log("\nConjunto inicializado:", conjuntoInicial); // Salida: Set(3) { 10, 20, 30 } - ¡Duplicados se eliminan!
 
 const conjuntoStrings = new Set("hola mundo"); // Iterable es string, añade cada caracter como elemento único
-console.log("Conjunto de un string:", conjuntoStrings); // Salida: Set(8) { 'h', 'o', 'l', 'a', ' ', 'm', 'u', 'n', 'd' }
+console.log("\nConjunto de un string:", conjuntoStrings); // Salida: Set(8) { 'h', 'o', 'l', 'a', ' ', 'm', 'u', 'n', 'd' }
 
 // * Métodos de inserción *
 const numerosUnicos = new Set();
 
 // add(valor): Añade un valor al conjunto. Si el valor ya existe, no hace nada (los Sets solo tienen valores únicos)
 numerosUnicos.add(10);
-console.log("Después de add(10):", numerosUnicos); // Salida: Set(1) { 10 }
+console.log("\nDespués de add(10):", numerosUnicos); // Salida: Set(1) { 10 }
 
 numerosUnicos.add(20).add(30).add(20); // Encadeamiento de add.  Intento de añadir 20 de nuevo, no tendrá efecto.
-console.log("Después de añadir 20, 30, 20:", numerosUnicos); // Salida: Set(3) { 10, 20, 30 } - Sólo una instancia de cada valor
+console.log("\nDespués de añadir 20, 30, 20:", numerosUnicos); // Salida: Set(3) { 10, 20, 30 } - Sólo una instancia de cada valor
 
 numerosUnicos.add(Number.NaN);
 numerosUnicos.add(Number.NaN); // Intentar añadir NaN duplicado -  Set considera NaN === NaN para la unicidad
-console.log("Después de añadir NaN duplicado:", numerosUnicos); // Salida: Set(4) { 10, 20, 30, NaN } -  ¡Solo una instancia de NaN!
+console.log("\nDespués de añadir NaN duplicado:", numerosUnicos); // Salida: Set(4) { 10, 20, 30, NaN } -  ¡Solo una instancia de NaN!
 
 // * Métodos de eliminación *
 const letrasUnicas = new Set(["a", "b", "c", "d", "e"]);
 
 // delete(valor): Elimina el valor del conjunto. Retorna true si el valor existía y fue eliminado, false si no.
 const borradoC = letrasUnicas.delete("c");
-console.log("Después de delete('c'):", letrasUnicas); // Salida: Set(4) { 'a', 'b', 'd', 'e' }
-console.log("¿Se borró 'c'?", borradoC); // Salida: true
+console.log("\nDespués de delete('c'):", letrasUnicas); // Salida: Set(4) { 'a', 'b', 'd', 'e' }
+console.log("\n¿Se borró 'c'?", borradoC); // Salida: true
 
 // clear(): Elimina todos los elementos del conjunto
 letrasUnicas.clear();
-console.log("Después de clear():", letrasUnicas); // Salida: Set(0) {} (conjunto vacío)
+console.log("\nDespués de clear():", letrasUnicas); // Salida: Set(0) {} (conjunto vacío)
 
 // * Métodos de actualización *
 // Se realiza con add(valor) para añadir un nuevo valor o actualizar uno existente (si no es único, no se añade)
@@ -269,7 +275,7 @@ interface Contacto {
 	telefono: string;
 }
 
-const agenda: Map<Contacto> = new Map(); // Usamos un Map para almacenar contactos (nombre: telefono)
+const agenda: Map<string, Contacto> = new Map(); // Usamos un Map para almacenar contactos (nombre: telefono)
 
 const rl = readline.createInterface({
 	input: process.stdin,
@@ -277,14 +283,14 @@ const rl = readline.createInterface({
 });
 
 function mostrarMenu(): void {
-	console.log("\n--- Agenda de Contactos ---");
-	console.log("1. Buscar contacto");
-	console.log("2. Insertar contacto");
-	console.log("3. Actualizar contacto");
-	console.log("4. Eliminar contacto");
-	console.log("5. Listar todos los contactos");
-	console.log("6. Finalizar programa");
-	console.log("--------------------------");
+	console.log("\n\n--- Agenda de Contactos ---");
+	console.log("\n1. Buscar contacto");
+	console.log("\n2. Insertar contacto");
+	console.log("\n3. Actualizar contacto");
+	console.log("\n4. Eliminar contacto");
+	console.log("\n5. Listar todos los contactos");
+	console.log("\n6. Finalizar programa");
+	console.log("\n--------------------------");
 }
 
 function obtenerInput(pregunta: string): Promise<string> {
@@ -306,8 +312,8 @@ async function buscarContacto(): Promise<void> {
 	);
 	const telefono = agenda.get(nombreBuscar);
 	if (telefono) {
-		console.log("\nContacto encontrado:");
-		console.log(`Nombre: ${nombreBuscar}, Teléfono: ${telefono}`);
+		console.log("\n\nContacto encontrado:");
+		console.log(`Nombre: ${nombreBuscar}, Teléfono: ${telefono.telefono}`);
 	} else {
 		console.log(`\nContacto "${nombreBuscar}" no encontrado en la agenda.`);
 	}
@@ -333,7 +339,7 @@ async function insertarContacto(): Promise<void> {
 		return;
 	}
 
-	agenda.set(nombre, telefono);
+	agenda.set(nombre, { nombre, telefono });
 	console.log(`\nContacto "${nombre}" insertado correctamente en la agenda.`);
 }
 
@@ -359,7 +365,7 @@ async function actualizarContacto(): Promise<void> {
 		return;
 	}
 
-	agenda.set(nombreActualizar, nuevoTelefono);
+	agenda.set(nombreActualizar, { nombre: nombreActualizar, telefono: nuevoTelefono });
 	console.log(`\nContacto "${nombreActualizar}" actualizado correctamente.`);
 }
 
@@ -380,13 +386,13 @@ async function eliminarContacto(): Promise<void> {
 
 async function listarContactos(): Promise<void> {
 	if (agenda.size === 0) {
-		console.log("\nLa agenda está vacía.");
+		console.log("\n\nLa agenda está vacía.");
 	} else {
-		console.log("\n--- Lista de Contactos ---");
+		console.log("\n\n--- Lista de Contactos ---");
 		agenda.forEach((telefono, nombre) => {
-			console.log(`Nombre: ${nombre}, Teléfono: ${telefono}`);
+			console.log(`Nombre: ${nombre}, Teléfono: ${telefono.telefono}`);
 		});
-		console.log("-------------------------");
+		console.log("\n-------------------------");
 	}
 }
 
@@ -404,7 +410,7 @@ async function main(): Promise<void> {
 			"4": eliminarContacto,
 			"5": listarContactos,
 			"6": async () => {
-				console.log("Finalizando programa. ¡Hasta luego!");
+				console.log("\nFinalizando programa. ¡Hasta luego!");
 				continuar = false;
 				rl.close();
 			},
