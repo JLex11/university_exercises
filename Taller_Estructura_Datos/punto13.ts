@@ -54,8 +54,8 @@ class PersonaCustom {
   }
 }
 
-// Leer JSON
 async function main() {
+  // Leer JSON
   const jsonData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'))
   const personaJson = new PersonaCustom(jsonData)
   personaJson.print()
