@@ -1,54 +1,121 @@
-# React + TypeScript + Vite
+# Sistema de Navegación y Tráfico
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto implementa un sistema de navegación y gestión de tráfico interactivo utilizando React. La aplicación permite visualizar rutas en un mapa, gestionar el tráfico en tiempo real y optimizar recorridos utilizando estructuras de datos avanzadas.
 
-Currently, two official plugins are available:
+## Características Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Visualización de mapas interactivos**: Interfaz gráfica para visualizar calles, intersecciones y puntos de interés.
+- **Cálculo de rutas óptimas**: Encuentra el camino más eficiente entre dos puntos del mapa.
+- **Simulación de tráfico**: Modelado y visualización de condiciones de tráfico en tiempo real.
+- **Gestión de incidentes**: Sistema para reportar y gestionar incidencias en la vía.
+- **Panel de control**: Interfaz administrativa para monitorizar el sistema.
 
-## Expanding the ESLint configuration
+## Estructuras de Datos Implementadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Grafos
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Los grafos son la estructura fundamental de este sistema, utilizados para representar la red vial:
+
+- **Nodos**: Representan intersecciones o puntos de decisión en el mapa.
+- **Aristas**: Representan calles o conexiones entre intersecciones.
+- **Pesos**: Indican la distancia, tiempo estimado o congestión de cada segmento vial.
+
+Implementamos algoritmos como Dijkstra para encontrar las rutas más cortas entre dos puntos, considerando factores como distancia, congestión y preferencias del usuario.
+
+### Colas (Queues)
+
+Las colas se utilizan para diversas funcionalidades:
+
+- **Gestión de eventos**: Los eventos de tráfico (accidentes, obras, etc.) se gestionan mediante una cola de prioridad.
+- **Simulación de tráfico**: Los vehículos se modelan en colas para simular el flujo de tráfico en intersecciones.
+- **Peticiones de usuarios**: Las solicitudes de ruta se procesan en orden mediante una cola.
+
+### Pilas (Stacks)
+
+Las pilas se implementan para:
+
+- **Historial de navegación**: Permite al usuario volver a estados anteriores de su ruta.
+- **Algoritmos de backtracking**: Utilizados en la búsqueda de rutas alternativas.
+- **Gestión de deshacer/rehacer**: Para modificaciones en el mapa o configuraciones.
+
+## Caso de Uso Real
+
+Un ejemplo práctico es cuando un usuario solicita una ruta:
+
+1. La aplicación utiliza un grafo para representar el mapa de la ciudad.
+2. El algoritmo de búsqueda (como Dijkstra o A*) encuentra la ruta óptima.
+3. Los incidentes de tráfico se gestionan mediante colas de prioridad.
+4. El historial de navegación se mantiene en una pila.
+5. Si hay cambios en el tráfico, la ruta se recalcula automáticamente.
+
+## Guía de Desarrollo
+
+### Requisitos Previos
+
+- Node.js (v14.0.0 o superior)
+- npm o yarn
+
+### Instalación
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/navigation-and-traffic-system.git
+   cd navigation-and-traffic-system
+   ```
+
+2. Instala las dependencias:
+   ```bash
+   npm install
+   # o
+   yarn
+   ```
+
+3. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   # o
+   yarn dev
+   ```
+
+4. Abre `http://localhost:5173` en tu navegador.
+
+### Estructura del Proyecto
+
+```
+navigation-and-traffic-system/
+├── src/
+│   ├── components/       # Componentes de React
+│   ├── models/           # Modelos de datos y estructuras
+│   ├── services/         # Servicios y API
+│   ├── utils/            # Utilidades y funciones auxiliares
+│   ├── App.tsx           # Componente principal
+│   └── main.tsx          # Punto de entrada
+├── public/               # Archivos estáticos
+└── ...                   # Archivos de configuración
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Tecnologías Utilizadas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React (UI)
+- TypeScript
+- Vite (para desarrollo y construcción)
+- Otras bibliotecas relevantes (mapbox, d3, etc.)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Comandos Útiles
+
+- `npm run dev`: Inicia el servidor de desarrollo
+- `npm run build`: Construye la aplicación para producción
+- `npm run preview`: Vista previa del build
+- `npm run test`: Ejecuta las pruebas
+
+## Contribuir
+
+1. Haz un fork del proyecto
+2. Crea una rama para tu característica (`git checkout -b feature/amazing-feature`)
+3. Realiza los cambios y haz commit (`git commit -m 'Add some amazing feature'`)
+4. Haz push a la rama (`git push origin feature/amazing-feature`)
+5. Abre un Pull Request
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
