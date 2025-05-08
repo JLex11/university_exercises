@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Queue } from '../data-structures/Queue'
 import type { TrafficAlert } from '../types'
 
-const alertLocations = ['Puerta del Sol', 'Gran Vía', 'Plaza Mayor', 'Atocha']
+const alertLocations = ['Av. El Poblado', 'Autopista Norte', 'Plaza Mayor', 'La 80']
 const alertDescriptions = [
 	'Tráfico lento debido a obras',
 	'Accidente de tráfico',
