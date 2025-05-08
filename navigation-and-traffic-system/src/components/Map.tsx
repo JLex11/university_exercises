@@ -16,7 +16,7 @@ const containerStyle = {
 export default function Map({ route, locations }: MapProps) {
 	const { isLoaded } = useJsApiLoader({
 		id: 'google-map-script',
-		googleMapsApiKey: 'AIzaSyBGM9D8LLt2C3Hrp7In0ENxyRKtj0wvezY',
+		googleMapsApiKey: '',
 	})
 
 	// Centro del mapa (calculado a partir de las ubicaciones)
